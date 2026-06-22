@@ -1,127 +1,117 @@
 # Estudio de mercado: monetizar con IA (Claude) — de hoy mismo a vivir de ello
 
-> Documento de trabajo personal, no relacionado con el código de Flora salvo en
-> la sección 3.1, donde se analiza monetizar la propia app.
+> Documento de trabajo personal. No depende de ningún proyecto, app o nicho
+> concreto — es un análisis general de vías de ingreso usando IA/Claude.
 
-## 0. Tu punto de partida
+## 0. Punto de partida
 
-La mayoría del contenido "gana dinero con IA" está pensado para gente sin
-ninguna habilidad previa. Tú no partes de cero:
+El activo real que tienes no es "saber usar ChatGPT", es **saber dirigir una
+IA para producir un resultado terminado** (código, automatización, contenido)
+sin que tú mismo tengas que dominar cada detalle técnico de partida. Eso es
+lo que se vende en todo lo de abajo. Añade el bilingüismo ES/EN, que duplica
+el mercado direccionable en casi todas las vías.
 
-- Ya sabes construir software real con Claude Code (esta app es la prueba).
-- Tienes un producto terminado y funcional (Flora) que sirve como portfolio.
-- Eres bilingüe ES/EN, lo que duplica el mercado direccionable en casi todo lo
-  de abajo.
-- Conoces un nicho (yoga/pilates/fitness/bienestar) con dolor real ya
-  identificado.
-
-Esto cambia la estrategia: en vez de "vender humo de IA", puedes vender
-**resultados construidos con IA**, que es mucho más defendible y mejor pagado.
+Esto cambia la estrategia frente al "gana dinero con IA" genérico: en vez de
+vender humo de IA, vendes **resultados construidos con IA**, que es más
+defendible y mejor pagado que vender prompts o cursos vacíos.
 
 ## 1. Mapa de oportunidades
 
 | Vía | Tiempo a primer ingreso | Techo de ingresos | Esfuerzo de venta | Competencia |
 |---|---|---|---|---|
-| Freelance "MVP/automatización con IA" | 3–10 días | Medio (techo por horas) | Bajo (plataformas) | Alta pero poco cualificada |
-| Automatización para pymes locales | 1–3 semanas | Alto (recurrente) | Alto (puerta fría) | Baja en tu zona probablemente |
+| Freelance "construyo/automatizo con IA" | 3–10 días | Medio (techo por horas) | Bajo (plataformas) | Alta pero poco cualificada |
+| Automatización para pymes locales | 1–3 semanas | Alto (recurrente) | Alto (puerta fría) | Baja, casi nadie la ofrece bien |
 | Copywriting/contenido asistido | 2–7 días | Bajo–medio | Bajo | Muy alta, mal pagado |
-| Monetizar Flora | 4–12 semanas | Medio, lento, pasivo | Medio (marketing) | Alta (mercado fitness apps) |
-| Micro-SaaS de nicho | 3–8 semanas | Alto si encaja | Medio | Baja si el nicho es estrecho |
-| Infoproducto "construye apps con IA" | 2–6 semanas | Medio | Alto (necesita audiencia) | Alta |
+| Micro-SaaS de nicho propio | 3–8 semanas | Alto si encaja | Medio | Baja si el nicho es estrecho |
+| Plantillas/kits reutilizables | 2–4 semanas | Bajo–medio, pasivo | Medio (distribución) | Media |
+| Infoproducto "haz esto con IA" | 2–6 semanas | Medio | Alto (necesita audiencia) | Alta |
 
-La columna importante es la segunda: para **dinero ya** vas a la fila 1 y 2;
-para **vivir de ello** necesitas migrar hacia las filas 2, 4 y 5 combinadas.
+La columna clave es la segunda: para **dinero ya** vas a las filas 1 y 2;
+para **vivir de ello** migras hacia 2, 4 y 5 combinadas.
 
 ## 2. Ingresos inmediatos (0–14 días)
 
-### 2.1 Freelance "te construyo tu MVP/automatización con IA"
+### 2.1 Freelance "te construyo/automatizo esto con IA"
 
-Con Claude Code puedes entregar en horas lo que a un freelance normal le lleva
-días: landing pages, paneles de administración, scrapers, integraciones de
-APIs, dashboards internos, bots.
+Con Claude/Claude Code puedes entregar en horas lo que a un freelance
+tradicional le lleva días: landing pages, paneles internos, scrapers,
+integraciones de APIs, dashboards, bots, pequeñas apps.
 
-- **Plataformas**: Malt (España, mejor pagado), Workana/Comunidad LATAM,
-  Fiverr, Upwork.
-- **Paquetes que se venden bien ahora mismo**:
+- **Plataformas**: Malt (España, mejor pagado), Workana, Fiverr, Upwork.
+- **Paquetes que se venden bien ahora**:
   - Landing page + formulario + email automático: 150–400 €, 1–2 días.
-  - MVP de app móvil sencilla (Expo, como esta): 600–2.000 €, 1–2 semanas.
-  - Bot de WhatsApp/Instagram con respuestas automáticas (API de Claude): 300–900 € de alta + 50–150 €/mes mantenimiento.
-  - Scraping/automatización de datos repetitivos: 200–600 € por proyecto.
-- **Acción concreta hoy**: publica 2–3 "gigs" con precio fijo y plazo fijo
-  (no por horas — vendes resultado, no tiempo). Usa Flora como pieza de
-  portfolio ("app completa construida en N días").
+  - Pequeña app/MVP funcional: 600–2.000 €, 1–2 semanas.
+  - Bot de WhatsApp/Instagram con respuestas automáticas (API de Claude):
+    300–900 € de alta + 50–150 €/mes mantenimiento.
+  - Scraping/limpieza/automatización de datos repetitivos: 200–600 €/proyecto.
+- **Acción concreta ya**: publica 2–3 "gigs" con precio fijo y plazo fijo (no
+  por horas — vendes resultado, no tiempo). Construye 2 piezas de demo en
+  esta primera semana (un bot sencillo, un mini dashboard) solo para tener
+  algo enseñable; no necesitan ser nada elaborado.
 
 ### 2.2 Automatización para pymes locales (la vía mejor pagada a corto plazo)
 
-Negocios físicos (clínicas, gimnasios, academias, restaurantes, asesorías)
-pagan bien por quitarse trabajo manual de encima, y casi nadie en tu zona les
-está ofreciendo esto todavía.
+Negocios físicos (clínicas, asesorías, inmobiliarias, comercios, talleres,
+academias) pagan bien por quitarse trabajo manual de encima, y casi nadie en
+tu zona se lo está ofreciendo todavía de forma seria.
 
 - **Qué vender**: bot de WhatsApp Business para reservas/FAQs, respuesta
-  automática de leads, generación automática de informes/facturas, agente
-  que resume y prioriza emails.
-- **Cómo se construye**: Claude API + n8n/Make como capa de automatización
-  (no necesitas reinventar infraestructura).
+  automática y cualificación de leads, generación automática de
+  informes/presupuestos/facturas, agente que resume y prioriza emails.
+- **Cómo se construye**: API de Claude + n8n/Make como capa de
+  automatización — no necesitas montar infraestructura desde cero.
 - **Precio**: 300–800 € de implementación + 50–150 €/mes de mantenimiento.
-  Con 8–10 clientes de mantenimiento ya tienes un colchón mensual estable.
-- **Cómo conseguir los primeros clientes**: puerta fría/LinkedIn local,
-  no marketplaces (ahí no buscan esto). Ofrece la primera automatización con
+  Con 8–10 clientes de mantenimiento tienes un colchón mensual estable.
+- **Cómo conseguir los primeros clientes**: puerta fría/LinkedIn local, no
+  marketplaces (ahí no buscan esto). Ofrece la primera automatización con
   descuento o gratis a 1–2 negocios a cambio de testimonio + caso de uso
   documentado — es tu palanca de venta para el resto.
 
 ### 2.3 Copywriting/contenido asistido (relleno, no base)
 
-Rápido de empezar pero el mercado está saturado y mal pagado (la IA ha bajado
-el precio del texto genérico a casi cero). Útil solo como ingreso puente
-mientras arrancan 2.1/2.2, no como estrategia central.
+Rápido de empezar pero el mercado está saturado y mal pagado (la IA ha
+bajado el precio del texto genérico a casi cero). Útil solo como ingreso
+puente mientras arrancan 2.1/2.2, no como estrategia central.
 
 ## 3. Construir activos (2–12 semanas)
 
 Esto es lo que te permite dejar de depender de vender horas/proyectos uno a
 uno.
 
-### 3.1 Monetizar Flora
-
-Hoy Flora es 100% local, sin cuentas, sin servidor — cero infraestructura de
-cobro. Opciones realistas, de menor a mayor esfuerzo:
-
-1. **Pro de pago único** (Expo IAP / RevenueCat): desbloquea más rutinas,
-   estadísticas avanzadas, exportar progreso, sin "anuncio" de marca. Es lo
-   más simple de implementar sobre la arquitectura actual.
-2. **Freemium con suscripción** (RevenueCat + backend mínimo): requiere
-   romper el "100% local" actual, más trabajo técnico.
-3. **Publicarla en Play Store/App Store** y monetizar con una versión Pro,
-   apoyándote en contenido orgánico (Reels/TikTok mostrando rutinas) para
-   adquisición — sin presupuesto de ads, el crecimiento será lento.
-
-**Expectativa realista**: el mercado de apps de fitness está dominado por
-marcas grandes (Nike Training, Adidas Training, Down Dog, etc.). Sin
-inversión en marketing, esto da ingresos modestos y lentos (cientos de €/mes
-en el mejor caso a medio plazo), salvo que construyas audiencia en redes en
-paralelo. Es un buen activo de portfolio y aprendizaje, no tu plan A para
-"vivir de ello" en los próximos meses.
-
-### 3.2 Micro-SaaS de nicho
+### 3.1 Micro-SaaS de nicho propio
 
 La jugada con mejor ratio esfuerzo/retorno a medio plazo. Con Claude Code
-puedes sacar un MVP vendible en días, no meses. Ejemplos concretos
-conectados con lo que ya sabes hacer:
+puedes sacar un MVP vendible en días, no meses. Elige un nicho **estrecho y
+con dolor claro**, no algo genérico. Ejemplos de tipo de problema (el sector
+concreto lo eliges tú según lo que conozcas o puedas validar rápido):
 
-- Generador de rutinas/planificador de clases para **profesores freelance**
-  de yoga/pilates (ellos venden a sus alumnos, tú les vendes la herramienta).
-- Sistema de reservas + recordatorios automáticos para estudios pequeños que
-  no quieren pagar un Mindbody/Glofox caro.
-- Panel simple de seguimiento de clientes para entrenadores personales.
+- Una tarea manual y repetitiva que un colectivo profesional concreto hace
+  todas las semanas (gestión de citas, generación de presupuestos,
+  seguimiento de clientes, reporting).
+- Algo que hoy resuelven con un Excel/WhatsApp/papel porque el software
+  "serio" del sector es caro o pensado para empresas grandes.
 
-Precio objetivo: 15–50 €/mes vía Stripe. Distribución: comunidades de
-profesores de yoga/pilates en Facebook/Instagram/Telegram, no SEO (demasiado
-lento). Con 30–40 clientes de pago tienes un sueldo.
+Precio objetivo: 15–50 €/mes vía Stripe. Distribución: comunidades del nicho
+en Facebook/Telegram/LinkedIn, no SEO (demasiado lento al principio). Con
+30–40 clientes de pago tienes un sueldo.
 
-### 3.3 Infoproducto "construir apps con Claude Code"
+**Antes de construir nada**: valida hablando con 10–15 personas del nicho
+elegido si pagarían por resolver ese problema concreto. Construir con IA es
+rápido; lo lento (y lo que de verdad falla en la mayoría de micro-SaaS) es
+encontrar gente dispuesta a pagar.
+
+### 3.2 Plantillas/kits reutilizables
+
+Empaquetar algo que ya construyes para clientes (un bot de WhatsApp con
+Claude API, un dashboard tipo, una automatización de n8n) como plantilla
+vendible una sola vez (Gumroad, plataformas de templates). Ingreso más bajo
+por unidad pero acumulativo y casi sin coste marginal de entrega.
+
+### 3.3 Infoproducto "cómo hacer esto con IA"
 
 Viable pero requiere audiencia previa (no la tienes todavía), así que es una
 vía de **meses**, no de semanas. Tiene sentido como subproducto derivado de
-documentar públicamente cómo construyes Flora y tus automatizaciones (2.1/2.2),
+documentar públicamente tus proyectos de automatización/freelance (2.1/2.2),
 no como punto de partida.
 
 ## 4. Vivir de ello (3–12 meses): la combinación que funciona
@@ -132,11 +122,10 @@ El error típico es elegir una sola vía. La combinación realista:
    gastos fijos desde el mes 1–2.
 2. **Crecimiento**: freelance puntual (2.1) mientras consigues más clientes
    recurrentes.
-3. **Apalancamiento**: 1 micro-SaaS (3.2) que empieza pequeño y compone mes a
+3. **Apalancamiento**: 1 micro-SaaS (3.1) que empieza pequeño y compone mes a
    mes sin que tengas que vender tu tiempo cada vez.
-4. **Marca/portfolio**: Flora (3.1) como demostración pública de lo que
-   sabes hacer — te trae clientes de 2.1/2.2 sin que la tengas que monetizar
-   directamente tú mismo.
+4. **Acumulación pasiva**: plantillas (3.2) vendidas en paralelo, sin
+   esfuerzo extra significativo una vez creadas.
 
 Progresión de ingresos razonable (no garantizada):
 
@@ -146,36 +135,38 @@ Progresión de ingresos razonable (no garantizada):
 
 ## 5. Riesgos y realismo
 
-- El mercado de "gurús de IA" vende cursos, no construye productos — no caigas
-  en prometer en tu propio marketing más de lo que puedes entregar.
-- En España necesitas alta como autónomo (o facturar vía cooperativa/factura
-  de otra forma legal) en cuanto haya ingresos recurrentes — no lo dejes para
-  el final, Hacienda no perdona retroactivamente.
+- El mercado de "gurús de IA" vende cursos, no construye productos — no
+  caigas en prometer en tu propio marketing más de lo que puedes entregar.
+- En España necesitas alta como autónomo (o facturar de otra forma legal) en
+  cuanto haya ingresos recurrentes — no lo dejes para el final.
 - El freelance es rápido pero impredecible (mes bueno, mes malo); el SaaS es
-  lento al principio pero compone. No abandones 2.2/3.2 tras el primer mes
+  lento al principio pero compone. No abandones 2.2/3.1 tras el primer mes
   flojo — son las que dan estabilidad real.
+- La parte que de verdad cuesta no es construir (la IA lo acelera mucho),
+  sino encontrar clientes dispuestos a pagar. Dedica al menos el mismo
+  tiempo a vender/contactar que a construir.
 
 ## 6. Plan de 30 días
 
 - **Semana 1**: perfiles en Malt/Workana + 2–3 paquetes con precio fijo
-  definidos; convertir Flora en pieza de portfolio (landing/demo pública);
-  lista de 30 negocios locales objetivo para automatización.
+  definidos; 2 piezas de demo rápidas como portfolio; lista de 30 negocios
+  locales objetivo para automatización.
 - **Semana 2**: contacto con los 30 negocios (puerta fría/LinkedIn, 5–10/día);
   aplicar a 10 ofertas freelance; cerrar el primer proyecto pequeño.
-- **Semana 3**: entregar el primer proyecto; empezar el MVP del micro-SaaS o
-  la primera automatización piloto (gratis/descuento a cambio de caso de
-  estudio).
+- **Semana 3**: entregar el primer proyecto; hablar con 10–15 personas de un
+  nicho candidato para validar la idea de micro-SaaS antes de construirlo.
 - **Semana 4**: revisar qué canal convirtió mejor y duplicar esfuerzo ahí;
-  fijar precios definitivos de mantenimiento recurrente.
+  fijar precios definitivos de mantenimiento recurrente; empezar el MVP del
+  micro-SaaS si la validación fue positiva.
 
 ## 7. Cómo usar Claude/Claude Code en cada vía
 
-- **Claude Code**: construir los MVPs y automatizaciones de las secciones
-  2.1, 2.2 y 3.2 en días en lugar de semanas — es tu ventaja de velocidad
-  frente a otros freelancers.
+- **Claude Code**: construir los MVPs y automatizaciones de 2.1, 2.2 y 3.1 en
+  días en lugar de semanas — es tu ventaja de velocidad frente a otros
+  freelancers.
 - **Claude API** (vía n8n/Make o integración directa): el motor de los bots
   de WhatsApp/Instagram y de la clasificación/respuesta automática de
   mensajes en 2.2.
 - **Claude (chat/Projects)**: redactar propuestas comerciales, scripts de
-  puerta fría, contenido de la landing de Flora, y documentar casos de uso
-  para usarlos como prueba social.
+  puerta fría, guiones de validación de nicho (3.1), y documentar casos de
+  uso para usarlos como prueba social.
