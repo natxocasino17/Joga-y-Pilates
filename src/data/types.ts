@@ -62,7 +62,11 @@ export type IllustrationKey =
   | 'deadbug'
   | 'sidePlank'
   | 'jumpingJack'
-  | 'rest';
+  | 'rest'
+  | 'superman'
+  | 'tuckBall'
+  | 'sideKick'
+  | 'dip';
 
 export interface LocalizedText {
   es: string;

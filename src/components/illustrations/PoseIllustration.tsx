@@ -241,6 +241,48 @@ const POSES: Record<IllustrationKey, Pose> = {
       [[64, 71], [66, 61]],
     ],
   },
+  // Prone, both the leading arm and trailing leg lifted off the floor —
+  // distinct from legRaise (supine), used by Superman and Swimming.
+  superman: {
+    head: [22, 50],
+    lines: [
+      [[28, 52], [58, 58]],
+      [[28, 52], [12, 40]],
+      [[58, 58], [82, 44]],
+    ],
+  },
+  // Curled, rounded silhouette (knees drawn to chest) — distinct from boat's
+  // open V shape — used by Rolling Like a Ball.
+  tuckBall: {
+    head: [54, 34],
+    lines: [
+      [[58, 38], [68, 56]],
+      [[68, 56], [54, 68]],
+      [[54, 68], [40, 46]],
+      [[40, 46], [50, 34]],
+    ],
+  },
+  // Side-lying with the bottom arm propped and the top leg kicking forward.
+  sideKick: {
+    head: [24, 46],
+    lines: [
+      [[28, 48], [60, 54]],
+      [[60, 54], [58, 76]],
+      [[60, 54], [88, 50]],
+      [[28, 48], [20, 62]],
+    ],
+  },
+  // Seated dip: one arm reaching back to a raised support, legs extended
+  // forward, hips dropping below the line between them.
+  dip: {
+    head: [66, 34],
+    lines: [
+      [[64, 40], [40, 52]],
+      [[40, 52], [36, 30]],
+      [[40, 52], [70, 60]],
+      [[70, 60], [86, 52]],
+    ],
+  },
 };
 
 export interface PoseIllustrationProps {

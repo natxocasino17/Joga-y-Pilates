@@ -501,7 +501,7 @@ export const exercises: Exercise[] = [
     avoidWith: [],
     mode: 'timed',
     durationSec: 35,
-    illustration: 'legRaise',
+    illustration: 'sideKick',
     bilateral: true,
   },
   {
@@ -540,7 +540,7 @@ export const exercises: Exercise[] = [
     avoidWith: ['lowerBack'],
     mode: 'timed',
     durationSec: 30,
-    illustration: 'legRaise',
+    illustration: 'superman',
   },
   {
     id: 'pilates-rolling-ball',
@@ -560,7 +560,7 @@ export const exercises: Exercise[] = [
     mode: 'reps',
     durationSec: 0,
     reps: 8,
-    illustration: 'boat',
+    illustration: 'tuckBall',
   },
   {
     id: 'pilates-side-plank',
@@ -857,7 +857,7 @@ export const exercises: Exercise[] = [
     mode: 'reps',
     durationSec: 0,
     reps: 12,
-    illustration: 'legRaise',
+    illustration: 'superman',
   },
   {
     id: 'gym-calf-raise',
@@ -937,7 +937,7 @@ export const exercises: Exercise[] = [
     mode: 'reps',
     durationSec: 0,
     reps: 12,
-    illustration: 'pushup',
+    illustration: 'dip',
   },
   {
     id: 'gym-burpee',
