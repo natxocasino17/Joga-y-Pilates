@@ -5,7 +5,8 @@ import { Discipline } from '@/theme/theme';
 
 export type Level = 'beginner' | 'intermediate' | 'advanced';
 
-export type Focus = Discipline | 'mixed';
+/** One or more disciplines the user wants in their routines. */
+export type Focus = Discipline[];
 
 export type BodyZone =
   | 'core'

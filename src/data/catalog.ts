@@ -4,13 +4,14 @@
  * and the library filters. Labels resolve through i18n keys.
  */
 import { Ionicons } from '@expo/vector-icons';
-import { BodyZone, Focus, Goal, Injury, Level } from './types';
+import { Discipline } from '@/theme/theme';
+import { BodyZone, Goal, Injury, Level } from './types';
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
 export const LEVELS: Level[] = ['beginner', 'intermediate', 'advanced'];
 
-export const FOCUSES: Focus[] = ['yoga', 'pilates', 'gym', 'mixed'];
+export const DISCIPLINES: Discipline[] = ['yoga', 'pilates', 'gym'];
 
 export const SESSION_PRESETS = [5, 10, 15, 20, 30] as const;
 
@@ -46,9 +47,8 @@ export const INJURIES: { id: Injury; icon: IconName }[] = [
   { id: 'ankle', icon: 'footsteps-outline' },
 ];
 
-export const FOCUS_ICONS: Record<Focus, IconName> = {
+export const DISCIPLINE_ICONS: Record<Discipline, IconName> = {
   yoga: 'leaf-outline',
   pilates: 'body-outline',
   gym: 'barbell-outline',
-  mixed: 'shapes-outline',
 };

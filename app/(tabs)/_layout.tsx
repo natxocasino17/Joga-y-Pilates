@@ -3,12 +3,18 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTheme } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 
 export default function TabsLayout() {
   const theme = useTheme();
   const { t, locale } = useI18n();
+  const insets = useSafeAreaInsets();
+  // On Android the gesture/nav bar sits right under the tab bar and can
+  // intercept taps meant for the tabs. Pad by the safe-area inset so the
+  // tappable area always clears it.
+  const androidBottomPad = Math.max(insets.bottom, 8);
 
   return (
     <Tabs
@@ -20,8 +26,9 @@ export default function TabsLayout() {
           backgroundColor: theme.colors.surface,
           borderTopColor: theme.colors.separator,
           borderTopWidth: Platform.OS === 'ios' ? 0.5 : 1,
-          height: Platform.OS === 'ios' ? 88 : 64,
+          height: Platform.OS === 'ios' ? 88 : 56 + androidBottomPad,
           paddingTop: 8,
+          paddingBottom: Platform.OS === 'ios' ? undefined : androidBottomPad,
         },
         tabBarLabelStyle: { fontSize: 11, fontWeight: '600' },
       }}

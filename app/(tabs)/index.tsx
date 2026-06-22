@@ -12,11 +12,11 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { ExerciseListItem } from '@/components/ExerciseListItem';
 import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
-import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
+import { useTheme, disciplineColor } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
 import { getExercise } from '@/data/exercises';
-import { formatMinutes } from '@/utils/format';
+import { focusLabel, formatMinutes } from '@/utils/format';
 
 function greetingKey(): 'home.greetingMorning' | 'home.greetingAfternoon' | 'home.greetingEvening' {
   const h = new Date().getHours();
@@ -34,9 +34,9 @@ export default function Today() {
   if (!profile || !todayRoutine) return <Screen />;
 
   const accent =
-    todayRoutine.focus === 'mixed'
-      ? theme.colors.primary
-      : disciplineColor(theme.colors, todayRoutine.focus as Discipline);
+    todayRoutine.focus.length === 1
+      ? disciplineColor(theme.colors, todayRoutine.focus[0])
+      : theme.colors.primary;
 
   const items = todayRoutine.items;
   const minutes = formatMinutes(todayRoutine.estimatedSec);
@@ -70,7 +70,7 @@ export default function Today() {
                 {t('home.todaySubtitle').toUpperCase()}
               </AppText>
               <AppText variant="title1" style={{ color: '#fff', marginTop: 6 }}>
-                {t(`disciplines.${todayRoutine.focus}`)} · {t(`levels.${todayRoutine.level}`)}
+                {focusLabel(t, todayRoutine.focus)} · {t(`levels.${todayRoutine.level}`)}
               </AppText>
               <View style={styles.heroMeta}>
                 <View style={styles.heroMetaItem}>

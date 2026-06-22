@@ -1,4 +1,10 @@
 /** Small formatting helpers. */
+import { Discipline } from '@/theme/theme';
+
+/** Joins the chosen disciplines for display, e.g. "Yoga · Pilates". */
+export function focusLabel(t: (path: string) => string, focus: Discipline[]): string {
+  return focus.map((d) => t(`disciplines.${d}`)).join(' · ');
+}
 
 /** 95 -> "1:35", 8 -> "0:08". */
 export function formatClock(totalSeconds: number): string {

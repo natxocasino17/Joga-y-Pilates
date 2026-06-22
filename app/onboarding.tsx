@@ -16,8 +16,8 @@ import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
 import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
-import { FOCUSES, FOCUS_ICONS, GOALS, INJURIES, LEVELS, SESSION_PRESETS, ZONES } from '@/data/catalog';
-import { BodyZone, Focus, Goal, Injury, Level, UserProfile } from '@/data/types';
+import { DISCIPLINES, DISCIPLINE_ICONS, GOALS, INJURIES, LEVELS, SESSION_PRESETS, ZONES } from '@/data/catalog';
+import { BodyZone, Goal, Injury, Level, UserProfile } from '@/data/types';
 
 const STEP_COUNT = 8;
 
@@ -29,7 +29,7 @@ export default function Onboarding() {
 
   const [step, setStep] = useState(0);
   const [name, setName] = useState('');
-  const [focus, setFocus] = useState<Focus | null>(null);
+  const [focus, setFocus] = useState<Discipline[]>([]);
   const [level, setLevel] = useState<Level | null>(null);
   const [minutes, setMinutes] = useState<number>(15);
   const [zones, setZones] = useState<BodyZone[]>([]);
@@ -48,7 +48,7 @@ export default function Onboarding() {
   const canAdvance = (): boolean => {
     switch (step) {
       case 2:
-        return focus !== null;
+        return focus.length > 0;
       case 3:
         return level !== null;
       default:
@@ -59,7 +59,7 @@ export default function Onboarding() {
   const finish = async () => {
     const profile: UserProfile = {
       name: name.trim() || (locale === 'en' ? 'friend' : 'amiga'),
-      focus: focus ?? 'mixed',
+      focus,
       level: level ?? 'beginner',
       sessionMinutes: minutes,
       zones,
@@ -112,7 +112,7 @@ export default function Onboarding() {
       <View style={styles.body}>
         {step === 0 && <WelcomeStep />}
         {step === 1 && <NameStep name={name} setName={setName} />}
-        {step === 2 && <FocusStep focus={focus} setFocus={setFocus} />}
+        {step === 2 && <FocusStep focus={focus} toggleFocus={(f) => toggle(focus, f, setFocus)} />}
         {step === 3 && <LevelStep level={level} setLevel={setLevel} />}
         {step === 4 && <TimeStep minutes={minutes} setMinutes={setMinutes} />}
         {step === 5 && (
@@ -282,21 +282,21 @@ function BigOption({
   );
 }
 
-function FocusStep({ focus, setFocus }: { focus: Focus | null; setFocus: (f: Focus) => void }) {
+function FocusStep({ focus, toggleFocus }: { focus: Discipline[]; toggleFocus: (f: Discipline) => void }) {
   const { t } = useI18n();
   const theme = useTheme();
   return (
     <View>
       <StepHeader title={t('onboarding.focusTitle')} subtitle={t('onboarding.focusSubtitle')} />
-      {FOCUSES.map((f) => (
+      {DISCIPLINES.map((f) => (
         <BigOption
           key={f}
           title={t(`disciplines.${f}`)}
           subtitle={t(`focusDesc.${f}`)}
-          icon={FOCUS_ICONS[f]}
-          selected={focus === f}
-          accent={f === 'mixed' ? theme.colors.primary : disciplineColor(theme.colors, f as Discipline)}
-          onPress={() => setFocus(f)}
+          icon={DISCIPLINE_ICONS[f]}
+          selected={focus.includes(f)}
+          accent={disciplineColor(theme.colors, f)}
+          onPress={() => toggleFocus(f)}
         />
       ))}
     </View>

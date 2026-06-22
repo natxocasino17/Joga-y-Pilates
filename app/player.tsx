@@ -17,7 +17,7 @@ import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
 import { ProgressRing } from '@/components/ui/ProgressRing';
 import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
-import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
+import { useTheme, disciplineColor } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
 import { getExercise } from '@/data/exercises';
@@ -80,9 +80,9 @@ export default function Player() {
   const isTimed = current && current.kind !== 'work' ? true : current?.kind === 'work' && current?.durationSec !== undefined;
 
   const accent =
-    todayRoutine?.focus === 'mixed' || !todayRoutine
-      ? theme.colors.primary
-      : disciplineColor(theme.colors, todayRoutine.focus as Discipline);
+    todayRoutine && todayRoutine.focus.length === 1
+      ? disciplineColor(theme.colors, todayRoutine.focus[0])
+      : theme.colors.primary;
 
   const advance = useCallback(() => {
     setIndex((i) => {
@@ -99,23 +99,31 @@ export default function Player() {
     });
   }, [segments]);
 
-  // Countdown tick for timed segments.
+  // Countdown tick for timed segments. Anchored to a wall-clock deadline
+  // (rather than decrementing by 1 each tick) so the displayed time stays
+  // accurate even if a tick is delayed — e.g. when the JS thread is busy or
+  // the app was backgrounded — instead of drifting or looking stuck.
   useEffect(() => {
     if (finished || paused || !current) return;
     const hasTimer = current.kind !== 'work' || current.durationSec !== undefined;
     if (!hasTimer) return;
 
-    const id = setInterval(() => {
-      setRemaining((r) => {
-        if (r <= 1) {
-          clearInterval(id);
-          advance();
-          return 0;
-        }
-        return r - 1;
-      });
-    }, 1000);
+    const deadline = Date.now() + remaining * 1000;
+    const tick = () => {
+      const secLeft = Math.ceil((deadline - Date.now()) / 1000);
+      if (secLeft <= 0) {
+        clearInterval(id);
+        setRemaining(0);
+        advance();
+      } else {
+        setRemaining(secLeft);
+      }
+    };
+    const id = setInterval(tick, 200);
     return () => clearInterval(id);
+    // `remaining` is intentionally read once as the starting point, not watched —
+    // watching it would restart the deadline every tick and defeat the fix.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, paused, finished, current, advance]);
 
   // Record the completed session once.

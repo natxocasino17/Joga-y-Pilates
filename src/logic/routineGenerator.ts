@@ -11,7 +11,6 @@
  */
 import { exercises } from '@/data/exercises';
 import { BodyZone, Exercise, Goal, Level, Routine, RoutineItem, UserProfile } from '@/data/types';
-import { Discipline } from '@/theme/theme';
 
 // ── seeded RNG (mulberry32) so a given seed always yields the same routine ──
 function makeRng(seed: number): () => number {
@@ -59,11 +58,6 @@ function resolvePrescription(ex: Exercise, level: Level): { durationSec: number;
   return { durationSec, reps, restSec };
 }
 
-function disciplinesForFocus(focus: UserProfile['focus']): Discipline[] {
-  if (focus === 'mixed') return ['yoga', 'pilates', 'gym'];
-  return [focus];
-}
-
 /** Higher score = better match for this user. */
 function scoreExercise(ex: Exercise, zones: BodyZone[], goals: Goal[]): number {
   let score = 0;
@@ -87,8 +81,8 @@ export interface GenerateOptions {
 }
 
 export function generateRoutine({ profile, date, salt = 0 }: GenerateOptions): Routine {
-  const rng = makeRng(hashString(date) ^ (salt * 0x9e3779b1) ^ hashString(profile.focus + profile.level));
-  const disciplines = disciplinesForFocus(profile.focus);
+  const rng = makeRng(hashString(date) ^ (salt * 0x9e3779b1) ^ hashString(profile.focus.join(',') + profile.level));
+  const disciplines = profile.focus;
 
   // 1. Filter by discipline, level and injuries.
   const pool = exercises.filter(

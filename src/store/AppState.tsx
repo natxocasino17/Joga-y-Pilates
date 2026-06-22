@@ -7,11 +7,16 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo, useS
 import { Locale } from '@/i18n/translations';
 import { generateRoutine, todayKey } from '@/logic/routineGenerator';
 import { Progress, Routine, SessionRecord, ThemePreference, UserProfile } from '@/data/types';
+import { Discipline } from '@/theme/theme';
 import { clearAll, loadItem, saveItem, StorageKeys } from './storage';
+
+const DEFAULT_DISCIPLINE_ORDER: Discipline[] = ['yoga', 'pilates', 'gym'];
 
 interface Preferences {
   locale: Locale;
   theme: ThemePreference;
+  /** Order disciplines are grouped in the library — editable in Settings. */
+  disciplineOrder: Discipline[];
 }
 
 interface DailySalt {
@@ -39,6 +44,7 @@ interface AppStateValue {
   updateProfile: (patch: Partial<UserProfile>) => Promise<void>;
   setLocale: (locale: Locale) => Promise<void>;
   setThemePreference: (theme: ThemePreference) => Promise<void>;
+  setDisciplineOrder: (order: Discipline[]) => Promise<void>;
   regenerateToday: () => Promise<void>;
   recordSession: (record: Omit<SessionRecord, 'date'>) => Promise<void>;
   resetProgress: () => Promise<void>;
@@ -66,7 +72,11 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const [onboarded, setOnboarded] = useState(false);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [progress, setProgress] = useState<Progress>(emptyProgress);
-  const [preferences, setPreferences] = useState<Preferences>({ locale: 'es', theme: 'auto' });
+  const [preferences, setPreferences] = useState<Preferences>({
+    locale: 'es',
+    theme: 'auto',
+    disciplineOrder: DEFAULT_DISCIPLINE_ORDER,
+  });
   const [dailySalt, setDailySalt] = useState<DailySalt>({ date: todayKey(), salt: 0 });
 
   // Hydrate persisted state once.
@@ -81,7 +91,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       ]);
       if (p) setProfile(p);
       if (pr) setProgress(pr);
-      if (prefs) setPreferences(prefs);
+      if (prefs) setPreferences((prev) => ({ ...prev, ...prefs }));
       if (ob) setOnboarded(true);
       if (salt && salt.date === todayKey()) setDailySalt(salt);
       setHydrated(true);
@@ -135,6 +145,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
+  const setDisciplineOrder = useCallback(async (disciplineOrder: Discipline[]) => {
+    setPreferences((prev) => {
+      const next = { ...prev, disciplineOrder };
+      saveItem(StorageKeys.preferences, next);
+      return next;
+    });
+  }, []);
+
   const regenerateToday = useCallback(async () => {
     setDailySalt((prev) => {
       const next = { date: todayKey(), salt: prev.date === todayKey() ? prev.salt + 1 : 1 };
@@ -180,6 +198,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     updateProfile,
     setLocale,
     setThemePreference,
+    setDisciplineOrder,
     regenerateToday,
     recordSession,
     resetProgress,

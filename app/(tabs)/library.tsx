@@ -12,17 +12,19 @@ import { Chip } from '@/components/ui/Chip';
 import { ExerciseListItem } from '@/components/ExerciseListItem';
 import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
+import { useAppState } from '@/store/AppState';
 import { exercises } from '@/data/exercises';
 import { ZONES } from '@/data/catalog';
-import { BodyZone, Level } from '@/data/types';
+import { BodyZone, Exercise, Level } from '@/data/types';
 
-const DISCIPLINES: Discipline[] = ['yoga', 'pilates', 'gym'];
 const LEVELS: Level[] = ['beginner', 'intermediate', 'advanced'];
 
 export default function Library() {
   const theme = useTheme();
   const { t, locale } = useI18n();
   const router = useRouter();
+  const { preferences } = useAppState();
+  const disciplineOrder = preferences.disciplineOrder;
 
   const [query, setQuery] = useState('');
   const [discipline, setDiscipline] = useState<Discipline | null>(null);
@@ -42,6 +44,15 @@ export default function Library() {
       return true;
     });
   }, [query, discipline, level, zone]);
+
+  // When no discipline filter is active, group results into sections — Yoga,
+  // Pilates, Gym, in the order set in Settings — instead of one mixed list.
+  const groups: { discipline: Discipline; items: Exercise[] }[] | null = useMemo(() => {
+    if (discipline) return null;
+    return disciplineOrder
+      .map((d) => ({ discipline: d, items: results.filter((ex) => ex.discipline === d) }))
+      .filter((g) => g.items.length > 0);
+  }, [discipline, disciplineOrder, results]);
 
   return (
     <Screen scroll>
@@ -68,7 +79,7 @@ export default function Library() {
       {/* Discipline filter */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow} contentContainerStyle={styles.filterContent}>
         <Chip label={t('common.all')} selected={discipline === null} onPress={() => setDiscipline(null)} />
-        {DISCIPLINES.map((d) => (
+        {disciplineOrder.map((d) => (
           <Chip
             key={d}
             label={t(`disciplines.${d}`)}
@@ -106,6 +117,21 @@ export default function Library() {
             {t('library.noResults')}
           </AppText>
         </View>
+      ) : groups ? (
+        groups.map((g) => (
+          <View key={g.discipline} style={{ marginBottom: 8 }}>
+            <View style={styles.sectionHeader}>
+              <View style={[styles.sectionDot, { backgroundColor: disciplineColor(theme.colors, g.discipline) }]} />
+              <AppText variant="title3">{t(`disciplines.${g.discipline}`)}</AppText>
+              <AppText variant="footnote" color="textTertiary" style={{ marginLeft: 6 }}>
+                · {g.items.length}
+              </AppText>
+            </View>
+            {g.items.map((ex) => (
+              <ExerciseListItem key={ex.id} exercise={ex} onPress={() => router.push(`/exercise/${ex.id}`)} />
+            ))}
+          </View>
+        ))
       ) : (
         results.map((ex) => (
           <ExerciseListItem key={ex.id} exercise={ex} onPress={() => router.push(`/exercise/${ex.id}`)} />
@@ -134,4 +160,6 @@ const styles = StyleSheet.create({
   },
   filterRow: { marginHorizontal: -20 },
   filterContent: { paddingHorizontal: 20, gap: 8, paddingVertical: 4 },
+  sectionHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 10 },
+  sectionDot: { width: 9, height: 9, borderRadius: 4.5, marginRight: 8 },
 });

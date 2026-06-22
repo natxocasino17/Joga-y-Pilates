@@ -4,7 +4,8 @@
  * Every change persists immediately via the app-state store.
  */
 import React from 'react';
-import { Alert, Platform, StyleSheet, TextInput, View } from 'react-native';
+import { Alert, Platform, Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Screen } from '@/components/ui/Screen';
 import { AppText } from '@/components/ui/AppText';
 import { Card } from '@/components/ui/Card';
@@ -14,8 +15,8 @@ import { Button } from '@/components/ui/Button';
 import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
-import { FOCUSES, GOALS, INJURIES, LEVELS, SESSION_PRESETS, ZONES } from '@/data/catalog';
-import { BodyZone, Focus, Goal, Injury, Level } from '@/data/types';
+import { DISCIPLINES, GOALS, INJURIES, LEVELS, SESSION_PRESETS, ZONES } from '@/data/catalog';
+import { BodyZone, Goal, Injury, Level } from '@/data/types';
 import Constants from 'expo-constants';
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -43,12 +44,32 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 export default function Settings() {
   const theme = useTheme();
   const { t, locale } = useI18n();
-  const { profile, preferences, updateProfile, setLocale, setThemePreference, resetProgress } = useAppState();
+  const { profile, preferences, updateProfile, setLocale, setThemePreference, setDisciplineOrder, resetProgress } =
+    useAppState();
 
   if (!profile) return <Screen />;
 
   const toggleInArray = <T,>(arr: T[], val: T): T[] =>
     arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val];
+
+  const toggleFocus = (f: Discipline) => {
+    if (profile.focus.includes(f)) {
+      if (profile.focus.length === 1) return; // keep at least one discipline
+      updateProfile({ focus: profile.focus.filter((x) => x !== f) });
+    } else {
+      updateProfile({ focus: [...profile.focus, f] });
+    }
+  };
+
+  const moveDiscipline = (d: Discipline, dir: -1 | 1) => {
+    const order = preferences.disciplineOrder;
+    const i = order.indexOf(d);
+    const j = i + dir;
+    if (j < 0 || j >= order.length) return;
+    const next = [...order];
+    [next[i], next[j]] = [next[j], next[i]];
+    setDisciplineOrder(next);
+  };
 
   const confirmReset = () => {
     if (Platform.OS === 'web') {
@@ -90,13 +111,13 @@ export default function Settings() {
 
         <Field label={t('settings.focus')}>
           <View style={styles.wrap}>
-            {FOCUSES.map((f: Focus) => (
+            {DISCIPLINES.map((f) => (
               <Chip
                 key={f}
                 label={t(`disciplines.${f}`)}
-                selected={profile.focus === f}
-                accent={f === 'mixed' ? theme.colors.primary : disciplineColor(theme.colors, f as Discipline)}
-                onPress={() => updateProfile({ focus: f })}
+                selected={profile.focus.includes(f)}
+                accent={disciplineColor(theme.colors, f)}
+                onPress={() => toggleFocus(f)}
               />
             ))}
           </View>
@@ -183,6 +204,43 @@ export default function Settings() {
             ]}
           />
         </Field>
+        <Field label={t('settings.disciplineOrder')}>
+          {preferences.disciplineOrder.map((d, i) => (
+            <View
+              key={d}
+              style={[
+                styles.orderRow,
+                { borderColor: theme.colors.border },
+                i === preferences.disciplineOrder.length - 1 && { borderBottomWidth: 0 },
+              ]}
+            >
+              <View style={[styles.orderDot, { backgroundColor: disciplineColor(theme.colors, d) }]} />
+              <AppText variant="body" style={{ flex: 1, marginLeft: 10 }}>
+                {t(`disciplines.${d}`)}
+              </AppText>
+              <Pressable
+                disabled={i === 0}
+                onPress={() => moveDiscipline(d, -1)}
+                hitSlop={8}
+                style={styles.orderBtn}
+              >
+                <Ionicons name="chevron-up" size={20} color={i === 0 ? theme.colors.textTertiary : theme.colors.text} />
+              </Pressable>
+              <Pressable
+                disabled={i === preferences.disciplineOrder.length - 1}
+                onPress={() => moveDiscipline(d, 1)}
+                hitSlop={8}
+                style={styles.orderBtn}
+              >
+                <Ionicons
+                  name="chevron-down"
+                  size={20}
+                  color={i === preferences.disciplineOrder.length - 1 ? theme.colors.textTertiary : theme.colors.text}
+                />
+              </Pressable>
+            </View>
+          ))}
+        </Field>
       </Section>
 
       <Section title={t('settings.about')}>
@@ -210,4 +268,12 @@ export default function Settings() {
 
 const styles = StyleSheet.create({
   wrap: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  orderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  orderDot: { width: 10, height: 10, borderRadius: 5 },
+  orderBtn: { width: 32, height: 32, alignItems: 'center', justifyContent: 'center' },
 });
