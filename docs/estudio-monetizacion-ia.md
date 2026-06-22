@@ -269,3 +269,62 @@ el primer pago si ha ido bien.
    un depósito pequeño.
 5. Solo con 5–10 compromisos reales (email + intención de pago, idealmente
    algún depósito) se empieza a construir el MVP.
+
+## 10. Apps en App Store/Play Store: ¿estrategia real o lotería?
+
+Publicar muchas apps "a ver cuál pega" (incluyendo alguna de broma/inútil
+tipo fiesta) es la estrategia de **2009–2012**, cuando bastaba existir en la
+tienda para que te encontraran navegando categorías. Hoy no funciona así:
+
+- Hay más de 1,8–2 millones de apps en cada tienda. El descubrimiento real es
+  casi todo búsqueda (ASO) o publicidad de pago, no explorar el catálogo.
+- Sin presupuesto de marketing ni ASO trabajado, una app tiene de forma
+  realista cero o casi cero descargas orgánicas, se construya con IA o no.
+  El cuello de botella vuelve a ser distribución, no construcción.
+- AdMob necesita volumen real para generar algo: con pocos usuarios/día son
+  céntimos al mes, no un sueldo. Hacen falta miles de usuarios activos
+  diarios para que sea relevante.
+- Las apps de broma/sin función real tuvieron su momento (la app del pedo,
+  "iFart", facturó mucho en 2008) pero esa ventana está cerrada: Apple
+  (guideline 4.2, "funcionalidad mínima") y Google rechazan/retiran
+  activamente apps sin función real — las tiendas las bajan directamente.
+- Apple cobra 99 $/año de cuenta; Google 25 $ una vez, pero desde hace un
+  par de años exige una fase de testing cerrado (≥20 testers, 14 días) antes
+  de publicar en producción en cuentas nuevas.
+- El coste oculto real no es el dinero, es el mantenimiento: cada app
+  publicada, aunque tenga cero usuarios, hay que mantenerla o la tienda la
+  retira. 10 apps no son 10 boletos de lotería gratis, son 10 cosas que
+  mantener para siempre.
+
+**Veredicto**: mala apuesta como estrategia principal si se necesita ingreso
+pronto — sin distribución (audiencia propia, presupuesto de ads, o golpe de
+suerte viral) casi ninguna llega a tener usuarios. Tiene sentido más adelante
+como apuesta lateral: **una** app bien dirigida a una búsqueda concreta que
+la gente ya hace en la tienda, con ASO desde el día 1 — no una cartera
+dispersa de muchas.
+
+## 11. Más propuestas de ingresos
+
+### Activas (cobran tiempo, más predecibles)
+
+- **Evaluación/entrenamiento de modelos de IA**: Outlier, DataAnnotation,
+  Surge AI, Invisible Technologies pagan por evaluar/corregir/comparar
+  respuestas de IA. ~15–40 $/hora (tareas de código pagan más). Empieza
+  literalmente al día siguiente, sin vender nada ni portfolio. Límite: es
+  por horas, no escala, disponibilidad de tareas variable.
+- **Asistente "aumentado por IA"** para autónomos/coaches: gestión de
+  email/agenda/contenido apoyándose en Claude para ir mucho más rápido,
+  cobrando precio de experto.
+- **Talleres puntuales de IA** para pymes/particulares (1–2h, 50–150 €):
+  rápido si hay algo de red de contactos, requiere soltura explicando.
+
+### Pasivas (más lentas, hay que acumular antes de ver dinero)
+
+- **Plantillas/workflows** (Notion, n8n, prompts empaquetados): techo bajo,
+  coste marginal casi cero.
+- **Canal de YouTube "faceless" con IA** (guion + voz + vídeo generados):
+  modelo real hoy, pero necesita volumen constante semanas/meses antes de
+  monetizar; YouTube penaliza el contenido IA genérico sin ángulo propio.
+- **Extensiones de navegador de utilidad concreta**: menos saturadas que las
+  apps móviles, también se descubren por búsqueda, más fácil acertar una
+  consulta nicho real que en mobile.
