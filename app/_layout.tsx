@@ -5,10 +5,17 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
+import { View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Stack } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {
+  useFonts,
+  Quicksand_500Medium,
+  Quicksand_600SemiBold,
+  Quicksand_700Bold,
+} from '@expo-google-fonts/quicksand';
 import { AppStateProvider } from '@/store/AppState';
 import { ThemeBridge } from '@/theme/ThemeBridge';
 import { useTheme } from '@/theme/theme';
@@ -37,6 +44,16 @@ function Navigator() {
 }
 
 export default function RootLayout() {
+  const [fontsLoaded] = useFonts({
+    Quicksand_500Medium,
+    Quicksand_600SemiBold,
+    Quicksand_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <View style={{ flex: 1, backgroundColor: '#FBF5EB' }} />;
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>

@@ -12,6 +12,7 @@ import { Screen } from '@/components/ui/Screen';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Chip';
+import { Glow } from '@/components/ui/Glow';
 import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
 import { useTheme, disciplineColor, Discipline } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
@@ -182,8 +183,10 @@ function WelcomeStep() {
           alignItems: 'center',
           justifyContent: 'center',
           marginBottom: 32,
+          overflow: 'hidden',
         }}
       >
+        <Glow color={theme.colors.primary} opacity={0.3} />
         <PoseIllustration name="tree" color={theme.colors.primary} size={120} />
       </View>
       <AppText variant="largeTitle" center>
@@ -465,8 +468,10 @@ function FinishStep({ name }: { name: string }) {
           alignItems: 'center',
           justifyContent: 'center',
           marginBottom: 28,
+          overflow: 'hidden',
         }}
       >
+        <Glow color={theme.colors.primary} opacity={0.3} />
         <Ionicons name="sparkles" size={52} color={theme.colors.primary} />
       </View>
       <AppText variant="largeTitle" center>

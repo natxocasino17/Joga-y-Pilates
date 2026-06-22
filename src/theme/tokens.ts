@@ -16,28 +16,37 @@ export const spacing = {
   huge: 48,
 } as const;
 
-// Generous, soft corner radii — the rounded, friendly feel of modern iOS.
+// Soft, rounded corner radii — bigger than iOS defaults for the calm,
+// "soft UI" wellness-app feel (cards read more like pillows than panels).
 export const radius = {
-  sm: 10,
-  md: 14,
-  lg: 20,
-  xl: 28,
+  sm: 12,
+  md: 16,
+  lg: 24,
+  xl: 30,
   pill: 999,
 } as const;
 
-// Typographic scale. We lean on system fonts for a native, professional feel.
+// Quicksand — a rounded, friendly geometric sans that gives the app a calm,
+// wellness-app voice instead of the default system font.
+export const fonts = {
+  regular: 'Quicksand_500Medium',
+  medium: 'Quicksand_600SemiBold',
+  bold: 'Quicksand_700Bold',
+} as const;
+
+// Typographic scale.
 export const typography = {
-  largeTitle: { fontSize: 34, fontWeight: '700' as const, letterSpacing: 0.37, lineHeight: 41 },
-  title1: { fontSize: 28, fontWeight: '700' as const, letterSpacing: 0.36, lineHeight: 34 },
-  title2: { fontSize: 22, fontWeight: '700' as const, letterSpacing: 0.35, lineHeight: 28 },
-  title3: { fontSize: 20, fontWeight: '600' as const, letterSpacing: 0.38, lineHeight: 25 },
-  headline: { fontSize: 17, fontWeight: '600' as const, letterSpacing: -0.41, lineHeight: 22 },
-  body: { fontSize: 17, fontWeight: '400' as const, letterSpacing: -0.41, lineHeight: 24 },
-  callout: { fontSize: 16, fontWeight: '400' as const, letterSpacing: -0.32, lineHeight: 21 },
-  subhead: { fontSize: 15, fontWeight: '400' as const, letterSpacing: -0.24, lineHeight: 20 },
-  footnote: { fontSize: 13, fontWeight: '400' as const, letterSpacing: -0.08, lineHeight: 18 },
-  caption: { fontSize: 12, fontWeight: '500' as const, letterSpacing: 0, lineHeight: 16 },
-  overline: { fontSize: 12, fontWeight: '700' as const, letterSpacing: 1.2, lineHeight: 16 },
+  largeTitle: { fontSize: 34, fontFamily: fonts.bold, letterSpacing: 0.2, lineHeight: 41 },
+  title1: { fontSize: 28, fontFamily: fonts.bold, letterSpacing: 0.2, lineHeight: 34 },
+  title2: { fontSize: 22, fontFamily: fonts.bold, letterSpacing: 0.2, lineHeight: 28 },
+  title3: { fontSize: 20, fontFamily: fonts.medium, letterSpacing: 0.2, lineHeight: 25 },
+  headline: { fontSize: 17, fontFamily: fonts.medium, letterSpacing: 0, lineHeight: 22 },
+  body: { fontSize: 17, fontFamily: fonts.regular, letterSpacing: 0, lineHeight: 24 },
+  callout: { fontSize: 16, fontFamily: fonts.regular, letterSpacing: 0, lineHeight: 21 },
+  subhead: { fontSize: 15, fontFamily: fonts.regular, letterSpacing: 0, lineHeight: 20 },
+  footnote: { fontSize: 13, fontFamily: fonts.regular, letterSpacing: 0, lineHeight: 18 },
+  caption: { fontSize: 12, fontFamily: fonts.medium, letterSpacing: 0, lineHeight: 16 },
+  overline: { fontSize: 12, fontFamily: fonts.bold, letterSpacing: 1.2, lineHeight: 16 },
 } as const;
 
 export type TypographyVariant = keyof typeof typography;

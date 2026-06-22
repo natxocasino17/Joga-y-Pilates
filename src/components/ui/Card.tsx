@@ -33,7 +33,7 @@ export function Card({ children, onPress, elevated = true, padded = true, style 
       style={[
         {
           backgroundColor: elevated ? theme.colors.surfaceElevated : theme.colors.surface,
-          borderRadius: theme.radius.lg,
+          borderRadius: theme.radius.xl,
           padding: padded ? theme.spacing.lg : 0,
           borderWidth: theme.scheme === 'dark' ? StyleSheet.hairlineWidth : 0,
           borderColor: theme.colors.border,

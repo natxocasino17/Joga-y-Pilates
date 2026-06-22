@@ -6,17 +6,19 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { Screen } from '@/components/ui/Screen';
 import { AppText } from '@/components/ui/AppText';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { Glow } from '@/components/ui/Glow';
 import { ExerciseListItem } from '@/components/ExerciseListItem';
 import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
 import { useTheme, disciplineColor } from '@/theme/theme';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
 import { getExercise } from '@/data/exercises';
-import { focusLabel, formatMinutes } from '@/utils/format';
+import { darken, focusLabel, formatMinutes } from '@/utils/format';
 
 function greetingKey(): 'home.greetingMorning' | 'home.greetingAfternoon' | 'home.greetingEvening' {
   const h = new Date().getHours();
@@ -37,6 +39,7 @@ export default function Today() {
     todayRoutine.focus.length === 1
       ? disciplineColor(theme.colors, todayRoutine.focus[0])
       : theme.colors.primary;
+  const heroGradient: [string, string] = [accent, darken(accent, 0.28)];
 
   const items = todayRoutine.items;
   const minutes = formatMinutes(todayRoutine.estimatedSec);
@@ -64,7 +67,9 @@ export default function Today() {
       ) : (
         <>
           {/* Hero routine card */}
-          <Card style={[styles.hero, { backgroundColor: accent }]} elevated={false} padded={false}>
+          <Card style={styles.hero} elevated={false} padded={false}>
+            <LinearGradient colors={heroGradient} style={StyleSheet.absoluteFill} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} />
+            <Glow color="#FFFFFF" opacity={0.3} cx="80%" cy="0%" r="85%" />
             <View style={styles.heroContent}>
               <AppText variant="overline" style={{ color: 'rgba(255,255,255,0.8)' }}>
                 {t('home.todaySubtitle').toUpperCase()}

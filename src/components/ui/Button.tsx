@@ -63,7 +63,7 @@ export function Button({
           backgroundColor: bg,
           borderColor,
           borderWidth: variant === 'secondary' ? StyleSheet.hairlineWidth : 0,
-          borderRadius: theme.radius.lg,
+          borderRadius: variant === 'primary' ? theme.radius.pill : theme.radius.lg,
           opacity: disabled ? 0.45 : pressed ? 0.85 : 1,
           transform: [{ scale: pressed ? 0.98 : 1 }],
           alignSelf: fullWidth ? 'stretch' : 'auto',

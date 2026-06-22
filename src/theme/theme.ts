@@ -1,10 +1,11 @@
 /**
  * Theme system: light & dark palettes + a React context to consume them.
  *
- * The palette is a calm, wellness-oriented set: deep ink backgrounds in dark
- * mode, soft paper tones in light mode, and a sage/green primary that reads
- * as "movement & nature". Each discipline (yoga / pilates / gym) also gets an
- * accent so the app feels cohesive but each world has its own identity.
+ * The palette is a calm, wellness-oriented set: warm cream/paper backgrounds
+ * in light mode, deep warm-ink backgrounds in dark mode, a sage/green primary
+ * that reads as "movement & nature", and a coral/amber hero gradient for the
+ * "glow" accents. Each discipline (yoga / pilates / gym) also gets an accent
+ * so the app feels cohesive but each world has its own identity.
  */
 import { createContext, useContext } from 'react';
 import { radius, spacing, typography } from './tokens';
@@ -41,48 +42,48 @@ export interface Palette {
 }
 
 const light: Palette = {
-  background: '#F6F5F1',
-  surface: '#FFFFFF',
+  background: '#FBF5EB',
+  surface: '#FFFCF6',
   surfaceElevated: '#FFFFFF',
-  surfaceSunken: '#EEEDE7',
-  text: '#1A1C1A',
-  textSecondary: '#5A615A',
-  textTertiary: '#9AA09A',
-  primary: '#3E7C5A',
-  primarySoft: '#E3EFE7',
+  surfaceSunken: '#F3E9D7',
+  text: '#2E2A23',
+  textSecondary: '#827A6C',
+  textTertiary: '#B3A996',
+  primary: '#7CA889',
+  primarySoft: '#E7F0E5',
   onPrimary: '#FFFFFF',
-  yoga: '#7C6BB0',
-  pilates: '#C77B8B',
-  gym: '#D98E4A',
-  border: '#E4E2DA',
-  separator: '#ECEAE3',
-  success: '#3E7C5A',
-  warning: '#D98E4A',
-  danger: '#C0564B',
-  heroGradient: ['#3E7C5A', '#2C5C42'],
-  overlayScrim: 'rgba(14,17,22,0.45)',
+  yoga: '#9C8CC9',
+  pilates: '#E59689',
+  gym: '#E3A857',
+  border: '#ECE1CB',
+  separator: '#F1E8D4',
+  success: '#7CA889',
+  warning: '#E3A857',
+  danger: '#D17B65',
+  heroGradient: ['#F2AC8B', '#E3A857'],
+  overlayScrim: 'rgba(43,30,18,0.45)',
 };
 
 const dark: Palette = {
-  background: '#0E1116',
-  surface: '#171B22',
-  surfaceElevated: '#1E232C',
-  surfaceSunken: '#0A0D11',
-  text: '#F2F4F1',
-  textSecondary: '#A7AEAA',
-  textTertiary: '#6B726E',
-  primary: '#6FB68C',
-  primarySoft: '#1C2C24',
-  onPrimary: '#0E1116',
-  yoga: '#A99BDC',
-  pilates: '#E0A0AE',
-  gym: '#E6A965',
-  border: '#262C35',
-  separator: '#21262E',
-  success: '#6FB68C',
-  warning: '#E6A965',
-  danger: '#E0796D',
-  heroGradient: ['#2C5C42', '#1A3A2A'],
+  background: '#1C1712',
+  surface: '#241E18',
+  surfaceElevated: '#2C2520',
+  surfaceSunken: '#15110D',
+  text: '#F6EFE4',
+  textSecondary: '#BBB0A0',
+  textTertiary: '#7C7265',
+  primary: '#8FC09D',
+  primarySoft: '#263428',
+  onPrimary: '#15110D',
+  yoga: '#B9A8E0',
+  pilates: '#E8A599',
+  gym: '#E8BD7A',
+  border: '#352D24',
+  separator: '#2D261F',
+  success: '#8FC09D',
+  warning: '#E8BD7A',
+  danger: '#E2937F',
+  heroGradient: ['#9C5F44', '#5C3A29'],
   overlayScrim: 'rgba(0,0,0,0.55)',
 };
 

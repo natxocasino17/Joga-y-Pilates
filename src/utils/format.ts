@@ -18,3 +18,12 @@ export function formatClock(totalSeconds: number): string {
 export function formatMinutes(totalSeconds: number): number {
   return Math.max(1, Math.round(totalSeconds / 60));
 }
+
+/** Darkens a #rrggbb color by `amount` (0-1) — used to build a gradient end-stop from a single accent. */
+export function darken(hex: string, amount: number): string {
+  const n = parseInt(hex.slice(1), 16);
+  const r = Math.round(((n >> 16) & 255) * (1 - amount));
+  const g = Math.round(((n >> 8) & 255) * (1 - amount));
+  const b = Math.round((n & 255) * (1 - amount));
+  return `#${[r, g, b].map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+}

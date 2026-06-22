@@ -18,6 +18,7 @@ import { Button } from '@/components/ui/Button';
 import { ProgressRing } from '@/components/ui/ProgressRing';
 import { PoseIllustration } from '@/components/illustrations/PoseIllustration';
 import { useTheme, disciplineColor } from '@/theme/theme';
+import { fonts } from '@/theme/tokens';
 import { useI18n } from '@/i18n/i18n';
 import { useAppState } from '@/store/AppState';
 import { getExercise } from '@/data/exercises';
@@ -248,7 +249,7 @@ function PrepareView({ remaining, accent, nextEx }: { remaining: number; accent:
         {t('player.getReady').toUpperCase()}
       </AppText>
       <ProgressRing progress={1 - remaining / PREPARE_SEC} color={accent} trackColor={theme.colors.separator} size={200}>
-        <AppText style={{ fontSize: 72, fontWeight: '700', color: theme.colors.text }}>{remaining}</AppText>
+        <AppText style={{ fontSize: 72, fontFamily: fonts.bold, color: theme.colors.text }}>{remaining}</AppText>
       </ProgressRing>
       {nextEx ? (
         <AppText variant="title3" center style={{ marginTop: 24 }}>
@@ -273,7 +274,7 @@ function RestView({ remaining, total, accent, nextEx }: { remaining: number; tot
         trackColor={theme.colors.separator}
         size={200}
       >
-        <AppText style={{ fontSize: 60, fontWeight: '700', color: theme.colors.text }}>{formatClock(remaining)}</AppText>
+        <AppText style={{ fontSize: 60, fontFamily: fonts.bold, color: theme.colors.text }}>{formatClock(remaining)}</AppText>
       </ProgressRing>
       {nextEx ? (
         <View style={{ alignItems: 'center', marginTop: 28 }}>
@@ -329,7 +330,7 @@ function WorkView({
           <ProgressRing progress={segProgress} color={accent} trackColor={theme.colors.separator} size={230} strokeWidth={14}>
             <View style={{ alignItems: 'center' }}>
               <PoseIllustration name={exercise.illustration} color={accent} size={96} strokeWidth={4} />
-              <AppText style={{ fontSize: 40, fontWeight: '700', color: theme.colors.text, marginTop: 4 }}>
+              <AppText style={{ fontSize: 40, fontFamily: fonts.bold, color: theme.colors.text, marginTop: 4 }}>
                 {formatClock(remaining)}
               </AppText>
             </View>
@@ -339,7 +340,7 @@ function WorkView({
             <View style={[styles.repsBubble, { backgroundColor: theme.colors.surfaceElevated }]}>
               <PoseIllustration name={exercise.illustration} color={accent} size={120} strokeWidth={4} />
             </View>
-            <AppText style={{ fontSize: 56, fontWeight: '700', color: theme.colors.text, marginTop: 16 }}>
+            <AppText style={{ fontSize: 56, fontFamily: fonts.bold, color: theme.colors.text, marginTop: 16 }}>
               {reps ?? exercise.reps}
             </AppText>
             <AppText variant="headline" color="textSecondary">
