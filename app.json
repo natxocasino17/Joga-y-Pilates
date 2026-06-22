@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "Flora",
+    "slug": "flora-yoga-pilates",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "flora",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0E1116"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.flora.yogapilates"
+    },
+    "android": {
+      "package": "com.flora.yogapilates",
+      "adaptiveIcon": {
+        "backgroundColor": "#0E1116",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
