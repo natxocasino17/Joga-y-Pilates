@@ -20,6 +20,17 @@ npx expo start                                     # dev server
 > `npm install <pkg>@<ver> --legacy-peer-deps` (Expo's nested peer deps require
 > the legacy flag).
 
+## Android APK releases
+
+`.github/workflows/build-apk.yml` builds a release APK on every push to
+`main` (or manual `workflow_dispatch`) via `expo prebuild` + Gradle
+`assembleRelease`, then publishes it as a GitHub Release (tag
+`v1.0.<run_number>`) with `app-release.apk` attached. No Expo/EAS account or
+secrets needed — the release build type signs with the default debug
+keystore, same as the React Native template does out of the box. This
+sandbox can't run it end-to-end (`expo prebuild` needs `api.expo.dev`), so
+verify on an actual push/dispatch on GitHub.
+
 ## Conventions
 
 - Path alias `@/*` → `src/*`.
