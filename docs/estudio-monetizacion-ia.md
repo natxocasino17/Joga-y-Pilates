@@ -170,3 +170,102 @@ Progresión de ingresos razonable (no garantizada):
 - **Claude (chat/Projects)**: redactar propuestas comerciales, scripts de
   puerta fría, guiones de validación de nicho (3.1), y documentar casos de
   uso para usarlos como prueba social.
+
+## 8. A fondo y sin filtros: el bot de automatización para una pyme (2.2)
+
+**Lo malo, primero:**
+
+- Construir el bot es la parte fácil (~15% del trabajo real). El resto es
+  encontrar el negocio, ganarte su confianza, definir bien qué debe
+  responder, probarlo y darle soporte cuando falle.
+- El rechazo es la norma: de 30 negocios contactados, lo normal es que
+  contesten 2–3 y cierres 0–1. No es un fallo personal, es así para todos al
+  empezar.
+- WhatsApp Business API "oficial" no es enchufar una clave: Meta exige
+  verificar la empresa, normalmente vía un intermediario de pago (Twilio,
+  360dialog, Whapi…), con coste mensual y aprobación de días/semanas. Las
+  vías "no oficiales" (librerías que simulan WhatsApp Web) violan los
+  términos de WhatsApp y pueden hacer que banneen el número del negocio del
+  cliente — un desastre real, no una multa simbólica.
+- La API de Claude se paga por uso; si no se mete en el precio, se regala
+  margen sin darse cuenta.
+- Te conviertes en soporte técnico permanente del negocio, no solo el día de
+  la entrega. Si falla un sábado por la noche, te llama el cliente a ti.
+- El primer cliente probablemente no pague precio completo, o nada: sin
+  referencias, lo normal es un piloto gratis o muy barato a cambio de
+  testimonio. El dinero real de esta vía tarda 4–8 semanas, no es tan
+  inmediato como suena el titular.
+- En España, en cuanto se cobre de forma recurrente hay que darse de alta
+  como autónomo (cuota mensual fija, reducida el primer año pero que sube).
+
+**Cómo sería en la práctica:**
+
+1. **Canal**: por dónde llega el mensaje del cliente final. El atajo
+   realista para empezar es un chat sencillo en la web del negocio (lo
+   controlas al 100%, sin aprobación de Meta, sin riesgo de ban) en vez de
+   WhatsApp oficial desde el primer día.
+2. **Webhook**: un aviso automático que dispara el flujo cada vez que llega
+   un mensaje nuevo.
+3. **n8n**: herramienta visual (cajas conectadas, no código puro) que recibe
+   el aviso, llama a Claude con el mensaje + la info del negocio (horarios,
+   precios, FAQ) y devuelve la respuesta. Gratis autoalojado (~5 €/mes de
+   servidor) o ~20 €/mes en su versión cloud.
+4. **Salida a humano**: si el bot no está seguro, reenvía el mensaje al
+   móvil del dueño en vez de inventar una respuesta — un bot que se
+   equivoca con un cliente real hace más daño que no tener bot.
+
+**Plan honesto de primeras semanas**: semana 1 montar una demo genérica
+(negocio ficticio) para tener algo que enseñar; semana 2 contactar 20–30
+negocios locales con un vídeo corto de la demo; semanas 3–4 normalmente
+seguir en cero, con suerte un piloto gratuito; semanas 5–8 ahí suele aparecer
+el primer pago si ha ido bien.
+
+## 9. A fondo y sin filtros: validar un micro-SaaS antes de construirlo (3.1)
+
+**Lo malo, primero:**
+
+- Construir ya no es el cuello de botella (con Claude Code, un MVP simple en
+  días). El cuello de botella es encontrar gente que pague, y en SaaS es
+  peor que en el bot porque hay que convencer a alguien de pagar **todos los
+  meses**, no una vez.
+- "Eso suena útil, yo pagaría por algo así" en una conversación **no es
+  validación real**. Es la trampa número uno: la gente es amable en persona
+  y no se compromete cuando hay dinero real de por medio.
+- Si no conoces el nicho desde dentro (no has trabajado en ese sector), estás
+  adivinando, y la mayoría de las adivinanzas fallan. Elegir bien el nicho es
+  el paso más importante y el que más gente se salta.
+- El plazo real hasta el primer cliente de pago, incluso validando bien,
+  suele ser de **2–3 meses**, no semanas. Esto contradice directamente
+  "ganar dinero inmediatamente" — el SaaS es la pieza lenta del plan, no la
+  rápida.
+- Cobros recurrentes implican facturación recurrente: alta como autónomo en
+  cuanto haya dinero real entrando, y si hay clientes en otros países de la
+  UE, reglas de IVA digital (OSS).
+- Si se guardan datos de clientes (aunque sea solo un email), hay
+  obligaciones de protección de datos (RGPD) desde el primer cliente, no
+  "para cuando crezca".
+- Churn: la gente cancela. 10 altas y 3 bajas en un mes son 7 netos, no 10.
+  Hay que vender constantemente solo para mantener el nivel.
+- Se compite con herramientas que ya existen en ese nicho aunque sean
+  viejas/caras — la gente ya tiene sus datos ahí y odia migrar; "es caro y
+  feo" no siempre basta para que cambien de proveedor.
+
+**Cómo se valida en la práctica, paso a paso:**
+
+1. Elegir candidatos a nicho a partir de contactos reales (un conocido, un
+   familiar con negocio, un grupo al que ya perteneces) — no inventar un
+   nicho en abstracto.
+2. Hablar con 15–20 personas de ese sector (llamada de 15 min, no encuesta
+   escrita) preguntando cómo resuelven hoy esa tarea y qué usan, **sin
+   preguntar nunca "¿pagarías por X?"** directamente — esa pregunta siempre
+   da un sí falso.
+3. Buscar la señal real: si 3+ personas mencionan el mismo dolor sin que tú
+   lo sugieras, y hoy lo resuelven con un parche manual (Excel, WhatsApp,
+   papel), ahí hay algo. Si hay que explicarles el problema, no hay
+   validación.
+4. Antes de programar nada: montar una landing sencilla con precio y un
+   botón de "apúntate"/"reserva tu plaza" (un día de trabajo con Claude
+   Code, sin el producto real detrás) y ver si alguien deja el email o paga
+   un depósito pequeño.
+5. Solo con 5–10 compromisos reales (email + intención de pago, idealmente
+   algún depósito) se empieza a construir el MVP.
